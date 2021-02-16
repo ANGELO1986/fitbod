@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp">
+
+    <TextView
+        android:id="@+id/nameExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/rm_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 RM Record"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/nameExercise"
+        />
+
+    <TextView
+        android:id="@+id/maxRepValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:layout_alignParentRight="true"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/lbs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lbs"
+        android:layout_below="@id/maxRepValue"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentRight="true"/>
+</RelativeLayout>
