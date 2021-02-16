@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -55,9 +56,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.listOfExercises.observe(this, Observer {
-            adapter.update(it)
-            adapter.notifyDataSetChanged()
+           if(it.size <= 0){
+               Toast.makeText(this,getString(R.string.no_exercises), Toast.LENGTH_LONG).show()
+           }else{
+               adapter.update(it)
+               adapter.notifyDataSetChanged()
+           }
         })
+
         viewModel.loadExercises(this)
 
 
