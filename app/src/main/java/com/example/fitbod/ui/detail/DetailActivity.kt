@@ -1,18 +1,19 @@
 package com.example.fitbod.ui.detail
 
+import android.R
 import android.os.Bundle
-import androidx.annotation.NonNull
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.anychart.AnyChart
 import com.anychart.chart.common.dataentry.DataEntry
 import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.anychart.charts.Cartesian
-import com.anychart.charts.Pie
 import com.anychart.core.ui.Tooltip
 import com.example.fitbod.databinding.ActivityDetailBinding
 import com.example.fitbod.model.Exercise
+import com.robinhood.spark.SparkView
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 class DetailActivity : AppCompatActivity() {
 
@@ -35,12 +36,11 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun funGenerateChart(binding: ActivityDetailBinding, exercise: Exercise) {
-
-       val pie : Cartesian? = AnyChart.line()
+       val pie : Cartesian? = AnyChart.bar()
             val data : ArrayList<DataEntry> = arrayListOf()
             exercise.logs.sort()
             for(log in exercise.logs){
-                data.add(ValueDataEntry(log.date,log.maxRep))
+                data.add(ValueDataEntry(log.date, log.maxRep))
             }
             if (pie != null) {
                 pie.data(data)

@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             binding.progressBar.visibility = if(it) View.VISIBLE else View.GONE
         })
 
-        binding.recycler.adapter
+        //binding.recycler.adapter
         adapter = ExerciseAdapter(
             listOf()
         ){

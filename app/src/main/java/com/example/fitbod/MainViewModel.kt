@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainViewModel() : ViewModel() {
+class MainViewModel : ViewModel() {
 
     private val _progressVisibility = MutableLiveData<Boolean>()
     val progressVisibility: LiveData<Boolean> get() = _progressVisibility
@@ -25,8 +25,7 @@ class MainViewModel() : ViewModel() {
             _progressVisibility.value = true
             withContext(Dispatchers.IO){
                 val listOfLogs : List<String> = Utils.getListOfLogs("workoutData.txt",ctx)
-                var listOfExercises: MutableList<Exercise> = mutableListOf()
-                var listExerciseLog: MutableList<ExerciseLog> = createListOfExercisesLog(listOfLogs)
+                val listExerciseLog: MutableList<ExerciseLog> = createListOfExercisesLog(listOfLogs)
                 _listOfExercises.postValue(createListOfExercise(listExerciseLog))
             }
             _progressVisibility.value = false
@@ -40,19 +39,18 @@ class MainViewModel() : ViewModel() {
 
     }
 
-    fun calculateMaxRep(log: ExerciseLog): Double{
+    private fun calculateMaxRep(log: ExerciseLog): Double{
         return log.weight*(36/(37-log.reps))
     }
 
-    fun createListOfExercise(listOfLogs : MutableList<ExerciseLog>): MutableList<Exercise>{
-        var listOfExercises: ArrayList<Exercise> = arrayListOf()
+    private fun createListOfExercise(listOfLogs : MutableList<ExerciseLog>): MutableList<Exercise>{
+        val listOfExercises: ArrayList<Exercise> = arrayListOf()
         var logs: MutableList<ExerciseLog>
         var auxExercise : Exercise
         var position : Int
         var positionExercise : Int
         for(exerciseLog in listOfLogs){
             auxExercise = Exercise(exerciseLog.name)
-            System.out.println("*******************"+ auxExercise.name + listOfExercises.contains(auxExercise))
             if(listOfExercises.contains(auxExercise)){
                 position = listOfExercises.indexOf(auxExercise)
                 listOfExercises.get(position).logs.add(exerciseLog)
@@ -74,10 +72,10 @@ class MainViewModel() : ViewModel() {
         return listOfExercises
     }
 
-    fun createListOfExercisesLog(listOfLogs: List<String>) : MutableList<ExerciseLog>{
+    private fun createListOfExercisesLog(listOfLogs: List<String>) : MutableList<ExerciseLog>{
         var arraySplits: List<String>
         var currentLog : ExerciseLog
-        var listExerciseLog: MutableList<ExerciseLog> = mutableListOf<ExerciseLog>()
+        val listExerciseLog: MutableList<ExerciseLog> = mutableListOf<ExerciseLog>()
         var previousLog: ExerciseLog
         var position: Int
         for(string in listOfLogs){
