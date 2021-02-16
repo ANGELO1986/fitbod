@@ -1,17 +1,19 @@
 package com.example.fitbod.ui.detail
 
-import android.R
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.anychart.AnyChart
 import com.anychart.chart.common.dataentry.DataEntry
 import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.anychart.charts.Cartesian
 import com.anychart.core.ui.Tooltip
+import com.example.fitbod.R
 import com.example.fitbod.databinding.ActivityDetailBinding
 import com.example.fitbod.model.Exercise
-import com.robinhood.spark.SparkView
 import java.util.*
 
 
@@ -25,13 +27,17 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        val window: Window = window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = Color.parseColor(getString(R.string.fitbod_orange))
         val exercise = intent.getParcelableExtra<Exercise>(EXTRA_EXERCISE)
+        val colorDrawable = ColorDrawable(Color.parseColor("#FFEB6134"))
+        supportActionBar?.setBackgroundDrawable(colorDrawable)
+
         if(exercise != null){
             title = exercise.name
             binding.exerciseRowView.setExercise(exercise)
             funGenerateChart(binding, exercise)
-
         }
     }
 

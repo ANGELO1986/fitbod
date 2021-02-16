@@ -1,7 +1,7 @@
 package com.example.fitbod.model
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Exercise (val logs: MutableList<ExerciseLog>, val name: String, var max: Double) : Parcelable {
@@ -20,12 +20,15 @@ data class Exercise (val logs: MutableList<ExerciseLog>, val name: String, var m
             return false
         }
         other as Exercise
-        if(name == other.name){
-            return true
-        }else{
-            return false
-        }
+        return name == other.name
 
+    }
+
+    override fun hashCode(): Int {
+        var result = logs.hashCode()
+        result = 31 * result + name.hashCode()
+        result = 31 * result + max.hashCode()
+        return result
     }
 }
 

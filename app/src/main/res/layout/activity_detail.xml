@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".ui.detail.DetailActivity">
+    tools:context=".ui.detail.DetailActivity"
+    android:background="@color/white">
 
     <com.example.fitbod.ExerciseRowView
         android:id="@+id/exerciseRowView"
@@ -18,4 +19,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/graph"/>
+
+    <com.robinhood.spark.SparkView
+        android:id="@+id/sparkview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:spark_scrubEnabled="true"
+        />
 </LinearLayout>

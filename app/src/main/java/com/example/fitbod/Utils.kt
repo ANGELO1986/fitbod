@@ -8,14 +8,14 @@ object Utils{
     fun getListOfLogs(fileName :String, ctx: Context): List<String>{
         var listOfLogs: List<String> = listOf<String>()
         try {
-            listOfLogs = readFileAsLinesUsingReadLines("workoutData.txt",ctx)
+            listOfLogs = readFileAsLinesUsingReadLines(fileName,ctx)
         } catch (e: IOException) {
             e.printStackTrace()
         }
         return listOfLogs
     }
 
-    fun readFileAsLinesUsingReadLines(fileName: String, ctx: Context): List<String>{
+    private fun readFileAsLinesUsingReadLines(fileName: String, ctx: Context): List<String>{
         return ctx
             .assets
             .open(fileName)

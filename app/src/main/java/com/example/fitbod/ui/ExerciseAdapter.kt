@@ -16,7 +16,6 @@ class ExerciseAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseViewHolder {
-        //val binding = ExerciseRowBinding.inflate(LayoutInflater.from(parent.context), parent,false)
         val binding = ViewExerciseRowViewBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ExerciseViewHolder(binding)
     }
@@ -36,11 +35,10 @@ class ExerciseAdapter(
         notifyDataSetChanged()
     }
 
-    //class ExerciseViewHolder(private val binding: ExerciseRowBinding): RecyclerView.ViewHolder(binding.root){
     class ExerciseViewHolder(private val binding: ViewExerciseRowViewBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(exercise: Exercise){
             binding.nameExercise.text = exercise.name
-            binding.maxRepValue.text = exercise.max.toString()
+            binding.maxRepValue.text = exercise.max.toInt().toString()
         }
     }
 }

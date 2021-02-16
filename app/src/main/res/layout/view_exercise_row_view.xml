@@ -10,16 +10,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/rm_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1 RM Record"
+        android:text="@string/_1_rm_record"
         android:layout_marginTop="16dp"
         android:layout_below="@id/nameExercise"
-        />
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/maxRepValue"
@@ -27,14 +28,16 @@
         android:layout_height="wrap_content"
         android:text="100"
         android:layout_alignParentRight="true"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/lbs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="lbs"
+        android:text="@string/lbs"
         android:layout_below="@id/maxRepValue"
         android:layout_marginTop="16dp"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:textColor="@color/black"/>
 </RelativeLayout>

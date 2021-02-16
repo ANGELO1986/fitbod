@@ -22,6 +22,6 @@ class ExerciseRowView @JvmOverloads constructor(
 
     fun setExercise(exercise: Exercise){
         nameExercise.text = exercise.name
-        maxRepValue.text = String.format("%.2f", exercise.max)
+        maxRepValue.text = exercise.max.toInt().toString()
     }
 }
