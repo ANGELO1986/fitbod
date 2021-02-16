@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         })
         //binding.toolbar.setBackgroundColor(resources.getColor(R.color.orangeFitbod))
         binding.toolbar.setTitle(R.string.app_name)
+        setSupportActionBar(binding.toolbar)
 
         val window: Window = window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
