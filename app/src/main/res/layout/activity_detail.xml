@@ -8,12 +8,12 @@
     tools:context=".ui.detail.DetailActivity"
     android:background="@color/white">
 
-    <com.example.fitbod.ExerciseRowView
+    <com.example.fitbod.ui.common.ExerciseRowView
         android:id="@+id/exerciseRowView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-    </com.example.fitbod.ExerciseRowView>
+    </com.example.fitbod.ui.common.ExerciseRowView>
 
     <com.anychart.AnyChartView
         android:layout_width="match_parent"

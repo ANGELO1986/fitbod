@@ -1,4 +1,4 @@
-package com.example.fitbod
+package com.example.fitbod.model
 
 import android.content.Context
 import java.io.BufferedReader

@@ -24,11 +24,6 @@ data class Exercise (val logs: MutableList<ExerciseLog>, val name: String, var m
 
     }
 
-    override fun hashCode(): Int {
-        var result = logs.hashCode()
-        result = 31 * result + name.hashCode()
-        result = 31 * result + max.hashCode()
-        return result
-    }
+
 }
 

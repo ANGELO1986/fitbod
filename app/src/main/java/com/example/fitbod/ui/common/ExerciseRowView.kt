@@ -1,10 +1,11 @@
-package com.example.fitbod
+package com.example.fitbod.ui.common
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import android.widget.TextView
+import com.example.fitbod.R
 import com.example.fitbod.model.Exercise
 
 class ExerciseRowView @JvmOverloads constructor(

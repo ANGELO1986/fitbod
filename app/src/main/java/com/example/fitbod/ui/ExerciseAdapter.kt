@@ -3,11 +3,8 @@ package com.example.fitbod.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fitbod.ExerciseRowView
-import com.example.fitbod.databinding.ExerciseRowBinding
 import com.example.fitbod.databinding.ViewExerciseRowViewBinding
 import com.example.fitbod.model.Exercise
-import com.example.fitbod.model.ExerciseLog
 
 class ExerciseAdapter(
     private var exercises: List<Exercise>,
