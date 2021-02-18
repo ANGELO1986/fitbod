@@ -18,7 +18,7 @@ class ExerciseAdapter(
     }
 
     override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
-        val exercise = exercises.get(position)
+        val exercise = exercises[position]
         holder.bind(exercise)
         holder.itemView.setOnClickListener { exerciseClickListener(exercise)}
     }

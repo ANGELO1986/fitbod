@@ -51,12 +51,6 @@ class DetailActivity : AppCompatActivity() {
             if (pie != null) {
                 pie.data(data)
             }
-            var tooltip : Tooltip? = pie?.tooltip()
-            var backgrounGraph : String
-            if(tooltip != null){
-                 backgrounGraph  = tooltip.background().toString()
-            }
-
 
             binding.graph.setChart(pie)
     }

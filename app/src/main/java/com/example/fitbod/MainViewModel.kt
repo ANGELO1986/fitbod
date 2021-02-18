@@ -20,7 +20,6 @@ class MainViewModel : ViewModel() {
     private val _listOfExercises =  MutableLiveData<List<Exercise>>()
     val listOfExercises : MutableLiveData<List<Exercise>> get() = _listOfExercises
 
-//  todo cambiar las mutables por otra estructura
     fun loadExercises(ctx : Context){
         viewModelScope.launch {
             _progressVisibility.value = true
@@ -31,13 +30,6 @@ class MainViewModel : ViewModel() {
             }
             _progressVisibility.value = false
         }
-
-//    val listOfLogs : List<String> = Utils.getListOfLogs("workoutData.txt",ctx)
-//    var listOfExercises: MutableList<Exercise> = mutableListOf()
-//    var listExerciseLog: MutableList<ExerciseLog> = createListOfExercisesLog(listOfLogs)
-//    listOfExercises = createListOfExercise(listExerciseLog)
-//    return listOfExercises
-
     }
 
     private fun calculateMaxRep(log: ExerciseLog): Double{
@@ -54,14 +46,14 @@ class MainViewModel : ViewModel() {
             auxExercise = Exercise(exerciseLog.name)
             if(listOfExercises.contains(auxExercise)){
                 position = listOfExercises.indexOf(auxExercise)
-                listOfExercises.get(position).logs.add(exerciseLog)
-                if(listOfExercises.get(position).max < exerciseLog.maxRep){
-                    listOfExercises.get(position).max = exerciseLog.maxRep
+                listOfExercises[position].logs.add(exerciseLog)
+                if(listOfExercises[position].max < exerciseLog.maxRep){
+                    listOfExercises[position].max = exerciseLog.maxRep
                 }
             }else{
                 if(listOfExercises.contains(exerciseLog.name)){
                     positionExercise = listOfExercises.indexOf(exerciseLog.name)
-                    listOfExercises.get(positionExercise).logs.add(exerciseLog)
+                    listOfExercises[positionExercise].logs.add(exerciseLog)
                 }else{
                     logs = mutableListOf()
                     logs.add(exerciseLog)
@@ -76,7 +68,7 @@ class MainViewModel : ViewModel() {
     private fun createListOfExercisesLog(listOfLogs: List<String>) : MutableList<ExerciseLog>{
         var arraySplits: List<String>
         var currentLog : ExerciseLog
-        val listExerciseLog: MutableList<ExerciseLog> = mutableListOf<ExerciseLog>()
+        val listExerciseLog: MutableList<ExerciseLog> = mutableListOf()
         var previousLog: ExerciseLog
         var position: Int
         for(string in listOfLogs){
@@ -85,8 +77,8 @@ class MainViewModel : ViewModel() {
             currentLog.maxRep = calculateMaxRep(currentLog)
             if(listExerciseLog.contains(currentLog)){
                 position = listExerciseLog.indexOf(currentLog)
-                previousLog = listExerciseLog.get(position)
-                if(previousLog.equals(currentLog)){
+                previousLog = listExerciseLog[position]
+                if(previousLog == currentLog){
                     listExerciseLog[position] = currentLog
                 }else{
                     listExerciseLog.add(currentLog)

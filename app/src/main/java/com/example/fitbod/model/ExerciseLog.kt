@@ -2,8 +2,6 @@ package com.example.fitbod.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -11,14 +9,14 @@ import java.time.format.DateTimeFormatter
 data class ExerciseLog (val date: String, val name: String, val set: Int, val reps: Int, val weight: Double, var maxRep: Double) : Comparable<ExerciseLog>,
     Parcelable {
     override operator fun compareTo(other: ExerciseLog): Int{
-        if(this.date.equals(other.date) && this.name.equals(other.name)){
-            return this.maxRep.compareTo(other.maxRep)
+        return if(this.date.equals(other.date) && this.name.equals(other.name)){
+            this.maxRep.compareTo(other.maxRep)
         }else{
             if(this.name.equals(other.name)){
-                var formatter = DateTimeFormatter.ofPattern("MMM dd yyyy")
-                return LocalDate.parse(this.date, formatter).compareTo(LocalDate.parse(other.date, formatter))
+                val formatter = DateTimeFormatter.ofPattern("MMM dd yyyy")
+                LocalDate.parse(this.date, formatter).compareTo(LocalDate.parse(other.date, formatter))
             }else{
-                return this.name.compareTo(other.name)
+                this.name.compareTo(other.name)
             }
         }
     }
@@ -30,5 +28,15 @@ data class ExerciseLog (val date: String, val name: String, val set: Int, val re
         if (date == other.date && name == other.name) return true
         else return false
 
+    }
+
+    override fun hashCode(): Int {
+        var result = date.hashCode()
+        result = 31 * result + name.hashCode()
+        result = 31 * result + set
+        result = 31 * result + reps
+        result = 31 * result + weight.hashCode()
+        result = 31 * result + maxRep.hashCode()
+        return result
     }
 }
